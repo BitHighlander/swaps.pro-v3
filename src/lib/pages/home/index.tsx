@@ -4,7 +4,7 @@ import {
   // Avatar,
   // VStack,
   // IconButton,
-  useDisclosure,
+  // useDisclosure,
   // Button,
   // Drawer,
   // DrawerBody,
@@ -16,22 +16,23 @@ import {
   // Heading,
   // List,
   // ListItem,
-  Divider,
+  // Divider,
   Flex,
   Stack,
 } from "@chakra-ui/react";
-import React from "react";
-import {
-  FaUserPlus,
-  FaInbox,
-  FaMicrophone,
-  FaHeadset,
-  FaChevronDown,
-} from "react-icons/fa";
+// import React from "react";
+// import {
+//   FaUserPlus,
+//   FaInbox,
+//   FaMicrophone,
+//   FaHeadset,
+//   FaChevronDown,
+// } from "react-icons/fa";
 
 import { Page } from "lib/layout/Page";
 
 import { SwapActions } from "./Swap/SwapActions";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import backgroundImage from "lib/assets/background/background.png"; // Adjust the path
 
