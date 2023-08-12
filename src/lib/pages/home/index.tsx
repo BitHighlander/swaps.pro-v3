@@ -32,7 +32,7 @@ import {
 import { Page } from "lib/layout/Page";
 
 import { SwapActions } from "./Swap/SwapActions";
-import backgroundImage from "lib/assets/background/thorfox.webp"; // Adjust the path
+import backgroundImage from "lib/assets/background/background.png"; // Adjust the path
 
 const Home = () => {
   localStorage.setItem("chakra-ui-color-mode", "dark");
