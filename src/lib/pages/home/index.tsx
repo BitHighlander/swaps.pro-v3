@@ -32,6 +32,7 @@ import {
 import { Page } from "lib/layout/Page";
 
 import { SwapActions } from "./Swap/SwapActions";
+// @ts-ignore
 import backgroundImage from "lib/assets/background/background.png"; // Adjust the path
 
 const Home = () => {
