@@ -25,6 +25,7 @@ export const theme = extendTheme({
         color: "white", // Set text color to white
         bg: "brand.black", // Use the black color from brand
         _hover: {
+          // eslint-disable-next-line sonarjs/no-duplicate-string
           bg: "brand.green", // Use the green color from brand on hover
         },
       },
