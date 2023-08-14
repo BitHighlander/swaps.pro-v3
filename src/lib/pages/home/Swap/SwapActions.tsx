@@ -35,15 +35,15 @@ import {
 } from "@chakra-ui/react";
 
 // @ts-ignore
+import { usePioneer, Balances } from "pioneer-react";
 import { useEffect, useState } from "react";
 
 // import etherLogo from "lib/assets/png/etherLogo.png";
 // @ts-ignore
-import { usePioneer } from "pioneer-react";
 
 export const SwapActions = () => {
   const { state } = usePioneer();
-  const { api, user } = state;
+  const { api, user, app } = state;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [balances, setBalances] = useState([
     {
@@ -63,7 +63,6 @@ export const SwapActions = () => {
       volume: "",
     },
   ]);
-  const [pubkeys, setPubkeys] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [swapInfo, setSwapInfo] = useState({
     currencyFrom: "",
@@ -99,7 +98,7 @@ export const SwapActions = () => {
     address: "",
     symbol: "",
     name: "",
-    amount:"",
+    amount: "",
   });
   const [output, setOutput] = useState({
     address: "",
@@ -111,10 +110,9 @@ export const SwapActions = () => {
 
   const setUser = async function () {
     try {
-      if(user && user.balances && user.pubkeys) {
+      if (app && app.balances && app.pubkeys) {
         console.log(" ********************* USER SET **********************");
-        const { balances, pubkeys } = user;
-        setIsLoaded(true)
+        setIsLoaded(true);
         // setBalances(balances);
         // setPubkeys(pubkeys);
 
@@ -126,20 +124,29 @@ export const SwapActions = () => {
         // get coins from api
         let coins = await api.CurrenciesChangelly();
         coins = coins.data;
-        console.log("*** coins: ",coins);
-
-        // filter coins for what keepkey supports
-        const filteredBalances = balances.filter((balance: { symbol: string }) =>
+        // eslint-disable-next-line no-console
+        console.log("*** coins: ", coins);
+        console.log("*** app.balances: ", app.balances);
+        const filteredBalances = app.balances
+          .filter((balance: { symbol: string }) =>
             coins.includes(balance.symbol.toLowerCase())
-        );
-        // console.log("filtered balances: ", filteredBalances);
-        // mark coins that have balances
+          )
+          .filter(
+            (balance: { balanceUSD: string }) =>
+              parseFloat(balance.balanceUSD) >= 1
+          )
+          .sort(
+            (a: { balanceUSD: string }, b: { balanceUSD: string }) =>
+              parseFloat(b.valueUSD) - parseFloat(a.valueUSD)
+          );
+
+        console.log("filteredBalances: ", filteredBalances);
+
         setBalances(filteredBalances);
 
         setInput(filteredBalances[0]);
         setOutput(filteredBalances[1]);
       }
-
     } catch (e) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -152,7 +159,7 @@ export const SwapActions = () => {
   // onStart()
   useEffect(() => {
     setUser();
-  }, [user, user?.balances]); // once on startup
+  }, [app, app?.balances, app?.pubkeys]); // once on startup
 
   const onSelectInput = async function () {
     try {
@@ -187,7 +194,7 @@ export const SwapActions = () => {
     }
   };
 
-  //onCancel
+  // onCancel
   const onCancel = async function () {
     try {
       console.log("onCancel: ");
@@ -202,7 +209,7 @@ export const SwapActions = () => {
       // eslint-disable-next-line no-console
       console.log("onSubmitPrimary: ");
       // create transaction
-      input.amount = "1000"
+      input.amount = "1000";
       const tx = {
         from: input.symbol,
         to: output.symbol,
@@ -211,10 +218,10 @@ export const SwapActions = () => {
         extraId: undefined,
       };
       console.log("tx: ", tx);
-      if(!input.symbol) throw Error("Missing input symbol")
-      if(!output.symbol) throw Error("Missing output symbol")
-      if(!output.address) throw Error("Missing output address")
-      if(!output.address) throw Error("Missing output address")
+      if (!input.symbol) throw Error("Missing input symbol");
+      if (!output.symbol) throw Error("Missing output symbol");
+      if (!output.address) throw Error("Missing output address");
+      if (!output.address) throw Error("Missing output address");
       const swapConduit = await api.CreateTransactionChangelly(tx);
       console.log("swapConduit: ", swapConduit.data);
       setSwapInfo(swapConduit.data);
@@ -239,20 +246,23 @@ export const SwapActions = () => {
           <ModalCloseButton />
           <ModalBody>
             {balances.map((balance, index) => (
-                <Card key={balance.address || index}>
-                  <Avatar src={balance.image} />
-                  <CardBody>
-                    <Heading size="md">{balance.blockchain}</Heading>
-                    <Text py="2">
-                      {balance.amount} {balance.symbol}
-                    </Text>
-                  </CardBody>
-                  <CardFooter>
-                    <Button variant="solid" colorScheme="blue">
-                      select
-                    </Button>
-                  </CardFooter>
-                </Card>
+              <Card key={balance?.address || index}>
+                <Avatar src={balance?.image} />
+                <CardBody>
+                  <Text>asset: {balance?.asset}</Text>
+                  <Text>network: {balance?.network}</Text>
+                  <Text>balanceUSD: {balance?.balanceUSD}</Text>
+                  <Text size={'sm'}>{balance?.assetCaip}</Text>
+                  <Text py="2">
+                    {balance?.balance} {balance?.symbol}
+                  </Text>
+                </CardBody>
+                <CardFooter>
+                  <Button variant="solid" colorScheme="blue">
+                    select
+                  </Button>
+                </CardFooter>
+              </Card>
             ))}
           </ModalBody>
           <ModalFooter>
@@ -388,7 +398,7 @@ export const SwapActions = () => {
                       {/*  alt="Ether Logo" */}
                       {/*  mr="0.5rem" */}
                       {/* /> */}
-                      {input.name} ({input.symbol})
+                      {input?.name} ({input?.symbol})
                     </Button>
                   </Box>
                   <Box>
@@ -432,7 +442,7 @@ export const SwapActions = () => {
                       }
                       onClick={onSelectOutput}
                     >
-                      {output.name} ({output.symbol})
+                      {output?.name} ({output?.symbol})
                     </Button>
                   </Box>
                   <Flex

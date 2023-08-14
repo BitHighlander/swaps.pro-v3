@@ -33,7 +33,7 @@
     "events": "^3.3.0",
     "framer-motion": "^10.12.4",
     "node-polyglot": "^2.5.0",
-    "pioneer-react": "0.2.24",
+    "pioneer-react": "^0.2.26",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",

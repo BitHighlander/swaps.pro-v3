@@ -2292,12 +2292,12 @@
     neo-regex "^1.0.7"
     ripple-regex "^1.1.8"
 
-"@pioneer-platform/pioneer-events@8.1.44":
-  version "8.1.44"
-  resolved "https://registry.yarnpkg.com/@pioneer-platform/pioneer-events/-/pioneer-events-8.1.44.tgz#487a06d8fedeecebb0dfe03fd73578e32c71a582"
-  integrity sha512-Rs76TpcQx07lcTHdTbzJNlbf2ha4cA9afwP7fB/lTt8qWnJ5daiObCuJRmAFuGjhA/ZwdBv6WRxL0eLuPQPmfw==
+"@pioneer-platform/pioneer-events@8.1.49":
+  version "8.1.49"
+  resolved "https://registry.yarnpkg.com/@pioneer-platform/pioneer-events/-/pioneer-events-8.1.49.tgz#7fe40631ecccf29b7f5fb02960209628dec066b3"
+  integrity sha512-6TGFUqlefReyVE/QD2Qy+5EhNGKZAwYo8FKmf9ksgKksglgWYbzL4Yca96Z1JeG7+saeB5piM7knT71xTTTtWA==
   dependencies:
-    "@pioneer-platform/pioneer-types" "^8.1.53"
+    "@pioneer-platform/pioneer-types" "^8.1.55"
     "@types/node" "^18.15.11"
     events "^3.3.0"
     socket.io-client "^4.5.4"
@@ -2326,16 +2326,23 @@
   dependencies:
     "@pioneer-platform/pioneer-types" "^8.1.53"
 
-"@pioneer-sdk/sdk@1.1.149":
-  version "1.1.149"
-  resolved "https://registry.yarnpkg.com/@pioneer-sdk/sdk/-/sdk-1.1.149.tgz#a73cb76e72621660771f6c7ed5f6bc986a069690"
-  integrity sha512-u5JAziWjip3/8pL8bjO5FQ/snda2zzYn5oU5GP4LzBUHlt7dlVw+c1pS5JXmPGYslwKOik78Ku8+mG2Wb3WDTA==
+"@pioneer-platform/pioneer-types@^8.1.55":
+  version "8.1.55"
+  resolved "https://registry.yarnpkg.com/@pioneer-platform/pioneer-types/-/pioneer-types-8.1.55.tgz#45a336382e78b36e9d089d705c2022faaa6434f7"
+  integrity sha512-6FaRks84RK4Gzk57+oWrXAu94YQqTyGNU/x6CB3BZWZrbDpP/VA6RHs1i8NEWdnvZ6SN8CadyJQaBKMVjxsSGA==
+  dependencies:
+    "@pioneer-platform/pioneer-types" "^8.1.55"
+
+"@pioneer-sdk/sdk@1.1.156":
+  version "1.1.156"
+  resolved "https://registry.yarnpkg.com/@pioneer-sdk/sdk/-/sdk-1.1.156.tgz#d432ae269211f96d1ece1d67282dab4fb8e5ee02"
+  integrity sha512-T1JW4YXcduX9eYBaKvYWbzwJgpPS104I2aWj6TrL+o94lFlkWCTwSNqROmcP+gWAcQI0N3gv3FTUpgGdP3/b5A==
   dependencies:
     "@keepkey/keepkey-sdk" "^0.2.25"
     "@pioneer-platform/loggerdog" "^8.1.27"
     "@pioneer-platform/pioneer-client" "9.0.9"
     "@pioneer-platform/pioneer-coins" "8.1.72"
-    "@pioneer-platform/pioneer-events" "8.1.44"
+    "@pioneer-platform/pioneer-events" "8.1.49"
     "@pioneer-platform/pioneer-invoke" "8.1.43"
     "@pioneer-sdk/tx-builder" "1.0.18"
     rango-sdk "^0.1.30"
@@ -8193,10 +8200,10 @@ pify@^3.0.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
   integrity sha512-C3FsVNH1udSEX48gGX1xfvwTWfsYWj5U+8/uK15BGzIGrKoUpghX8hWZwa/OFnakBiiVNmBvemTJR5mcy7iPcg==
 
-pioneer-react@0.2.24:
-  version "0.2.24"
-  resolved "https://registry.yarnpkg.com/pioneer-react/-/pioneer-react-0.2.24.tgz#8128595401d22bed7f6c70511cf80abee771b4bf"
-  integrity sha512-n8ThM3wVWMgk56pZIvNfjf/+mhn0ZMO/QrusTxlGpP/1ARv1kn53Vcgi4XEEAj/juEJU8DKvQKgeUwuVlECh7A==
+pioneer-react@^0.2.26:
+  version "0.2.26"
+  resolved "https://registry.yarnpkg.com/pioneer-react/-/pioneer-react-0.2.26.tgz#f69726dbdc99675e39cce13311012297089f236a"
+  integrity sha512-HJc4fWzUxdj9JWLjWZbX9vzuZHRwlXGkt/zeq3yXBWP/l2x6YiJ++eO0c8r8CCx1cofgfHi7t3ProIdFWdUf+Q==
   dependencies:
     "@chakra-ui/icons" "^2.0.19"
     "@chakra-ui/react" "^2.6.0"
@@ -8208,7 +8215,7 @@ pioneer-react@0.2.24:
     "@keepkey/hdwallet-keepkey-rest" "^1.40.29"
     "@keepkey/keepkey-sdk" "^0.2.48"
     "@pioneer-platform/pioneer-client" "^9.0.6"
-    "@pioneer-sdk/sdk" "1.1.149"
+    "@pioneer-sdk/sdk" "1.1.156"
     "@shapeshiftoss/hdwallet-core" "^1.50.0"
     "@shapeshiftoss/hdwallet-metamask" "^1.50.0"
     "@shapeshiftoss/hdwallet-native" "^1.50.3"
@@ -8221,6 +8228,7 @@ pioneer-react@0.2.24:
     react-dom "^18.2.0"
     react-helmet "^6.1.0"
     react-icons "^4.8.0"
+    react-image "^4.1.0"
     react-qr-code "^2.0.11"
     react-router-dom "^6.10.0"
     rollup-plugin-node-polyfills "^0.2.1"
@@ -8573,6 +8581,11 @@ react-icons@^4.8.0:
   version "4.10.1"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.10.1.tgz#3f3b5eec1f63c1796f6a26174a1091ca6437a500"
   integrity sha512-/ngzDP/77tlCfqthiiGNZeYFACw85fUjZtLbedmJ5DTlNDIwETxhwBzdOJ21zj4iJdvc0J3y7yOsX3PpxAJzrw==
+
+react-image@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-image/-/react-image-4.1.0.tgz#92f2d4a809a178b3bf69acd7bad7da7aa5e7364c"
+  integrity sha512-qwPNlelQe9Zy14K2pGWSwoL+vHsAwmJKS6gkotekDgRpcnRuzXNap00GfibD3eEPYu3WCPlyIUUNzcyHOrLHjw==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
